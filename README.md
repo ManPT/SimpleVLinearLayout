@@ -3,8 +3,8 @@
 ---
 ## OnMeasure 测量方法
     先说思路，纵向的LinearLayout测量，宽度和高度分别有match_parent，wrap_content两种情况。
-    1·宽度、高度match_parent，对应精准模式 MeasureSpec.EXACTLY，直接设置宽高值
-    2.宽度warp_content，需要测量所有子View的宽度，找出所有子View中，宽度最大的值，为LinearLayout的宽度。
+    1· 宽度、高度match_parent，对应精准模式 MeasureSpec.EXACTLY，直接设置宽高值
+    2. 宽度warp_content，需要测量所有子View的宽度，找出所有子View中，宽度最大的值，为LinearLayout的宽度。
     3. 高度warp_content，需要测量所有子View的高度，所有子view的高度和为LinearLayout的高度。
     4. 注意计算LinearLayout的padding和子View的margin
 
