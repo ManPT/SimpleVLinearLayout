@@ -46,9 +46,9 @@ public class SimpleLinearLayout extends ViewGroup {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         // super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         switch (widthMode) {
             case MeasureSpec.AT_MOST:
                 // 一般当childView设置其宽、高为wrap_content时
@@ -86,6 +86,7 @@ public class SimpleLinearLayout extends ViewGroup {
         for (int position = 0; position < count; position++) {
             View childView = getChildAt(position);
             // 测量子view
+           // measureChild(childView,widthMeasureSpec,heightMeasureSpec);
             measureChildWithMargins(childView, widthMeasureSpec, 0, heightMeasureSpec, 0);
             LayoutParams layoutParams = (LayoutParams) childView.getLayoutParams();
             if (widthMode != MeasureSpec.EXACTLY) {
@@ -105,7 +106,6 @@ public class SimpleLinearLayout extends ViewGroup {
 
             if (heightMode != MeasureSpec.EXACTLY) {
                 // 开启自动测量高度
-
                 childHeight = childView.getMeasuredHeight() + layoutParams.topMargin + layoutParams.bottomMargin;
                 mHeight += childHeight;
             }
@@ -127,7 +127,6 @@ public class SimpleLinearLayout extends ViewGroup {
         for (int position = 0; position < count; position++) {
             childView = getChildAt(position);
             LayoutParams layoutParams = (LayoutParams) childView.getLayoutParams();
-            Log.d("pagntao", "layout leftMargin = " + layoutParams.leftMargin);
             left = layoutParams.leftMargin + getPaddingLeft();
             top += layoutParams.topMargin;
             right = childView.getMeasuredWidth() + getPaddingRight() + layoutParams.leftMargin;
@@ -135,7 +134,6 @@ public class SimpleLinearLayout extends ViewGroup {
             childView.layout(left, top, right, bottom);
             top += childView.getMeasuredHeight() + layoutParams.bottomMargin;
         }
-
     }
 
     @Override
